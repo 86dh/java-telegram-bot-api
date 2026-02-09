@@ -1,6 +1,5 @@
 package com.pengrad.telegrambot.model
 
-import com.pengrad.telegrambot.model.checklist.Checklist
 import com.pengrad.telegrambot.utility.kotlin.JavaInteger
 
 data class Video(
