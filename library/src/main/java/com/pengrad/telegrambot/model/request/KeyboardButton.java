@@ -19,6 +19,7 @@ public class KeyboardButton implements Serializable {
     private KeyboardButtonRequestChat request_chat;
     private WebAppInfo web_app;
     private String icon_custom_emoji_id;
+    private String style;
 
     public KeyboardButton(String text) {
         this.text = text;
@@ -56,6 +57,11 @@ public class KeyboardButton implements Serializable {
 
     public KeyboardButton iconCustomEmojiId(String iconCustomEmojiId) {
         this.icon_custom_emoji_id = iconCustomEmojiId;
+        return this;
+    }
+
+    public KeyboardButton style(String style) {
+        this.style = style;
         return this;
     }
 }
