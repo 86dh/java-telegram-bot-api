@@ -18,6 +18,7 @@ data class InlineKeyboardButton @JvmOverloads constructor(
     var pay: Boolean? = null,
     @get:JvmName("webApp") var webApp: WebAppInfo? = null,
     @get:JvmName("copyText") var copyText: CopyTextButton? = null,
+    @get:JvmName("iconCustomEmojiId") var iconCustomEmojiId: String? = null
 ) {
 
     fun url(url: String): InlineKeyboardButton {
@@ -77,5 +78,10 @@ data class InlineKeyboardButton @JvmOverloads constructor(
 
     fun isPay(): Boolean {
         return pay ?: false
+    }
+
+    fun iconCustomEmojiId(iconCustomEmojiId: String): InlineKeyboardButton {
+        this.iconCustomEmojiId = iconCustomEmojiId
+        return this
     }
 }
