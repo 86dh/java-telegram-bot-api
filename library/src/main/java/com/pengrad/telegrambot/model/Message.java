@@ -2,6 +2,7 @@ package com.pengrad.telegrambot.model;
 
 import com.pengrad.telegrambot.model.chatbackground.ChatBackground;
 import com.pengrad.telegrambot.model.chatboost.ChatBoostAdded;
+import com.pengrad.telegrambot.model.chatowner.ChatOwnerChanged;
 import com.pengrad.telegrambot.model.chatowner.ChatOwnerLeft;
 import com.pengrad.telegrambot.model.checklist.Checklist;
 import com.pengrad.telegrambot.model.checklist.ChecklistTasksAdded;
@@ -133,6 +134,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     private DirectMessagePriceChanged direct_message_price_changed;
     private Integer paid_star_count;
     private ChatOwnerLeft chat_owner_left;
+    private ChatOwnerChanged chat_owner_changed;
 
     public Long messageThreadId() {
         return message_thread_id;
@@ -539,6 +541,10 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
         return chat_owner_left;
     }
 
+    public ChatOwnerChanged chatOwnerChanged() {
+        return chat_owner_changed;
+    }
+
     /**
      * Only for backwards-compatibility with MaybeInaccessibleMessage
      */
@@ -668,7 +674,8 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 Objects.equals(suggested_post_refunded, message.suggested_post_refunded) &&
                 Objects.equals(direct_message_price_changed, message.direct_message_price_changed) &&
                 Objects.equals(paid_star_count, message.paid_star_count) &&
-                Objects.equals(chat_owner_left, message.chat_owner_left);
+                Objects.equals(chat_owner_left, message.chat_owner_left) &&
+                Objects.equals(chat_owner_changed, message.chat_owner_changed);
     }
 
     @Override
@@ -783,6 +790,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 ", direct_message_price_changed=" + direct_message_price_changed +
                 ", paid_star_count=" + paid_star_count +
                 ", chat_owner_left=" + chat_owner_left +
+                ", chat_owner_changed=" + chat_owner_changed +
                 '}';
     }
 }
