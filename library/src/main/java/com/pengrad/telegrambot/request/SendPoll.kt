@@ -2,6 +2,7 @@ package com.pengrad.telegrambot.request
 
 import com.pengrad.telegrambot.model.MessageEntity
 import com.pengrad.telegrambot.model.Poll
+import com.pengrad.telegrambot.model.request.InputPollMedia
 import com.pengrad.telegrambot.model.request.InputPollOption
 import com.pengrad.telegrambot.model.request.ParseMode
 import com.pengrad.telegrambot.utility.kotlin.checkDeprecatedConstructorParameters
@@ -131,5 +132,20 @@ class SendPoll private constructor(
     fun descriptionEntities(descriptionEntities: List<MessageEntity>) = applySelf { this.descriptionEntities = descriptionEntities }
 
     fun descriptionEntities(vararg descriptionEntities: MessageEntity) = descriptionEntities(descriptionEntities.toList())
+
+    var media: InputPollMedia? by optionalRequestParameter()
+    var explanationMedia: InputPollMedia? by optionalRequestParameter()
+    var membersOnly: Boolean? by optionalRequestParameter()
+    var countryCodes: List<String>? by optionalRequestParameter()
+
+    fun media(media: InputPollMedia) = applySelf { this.media = media }
+
+    fun explanationMedia(explanationMedia: InputPollMedia) = applySelf { this.explanationMedia = explanationMedia }
+
+    fun membersOnly(membersOnly: Boolean) = applySelf { this.membersOnly = membersOnly }
+
+    fun countryCodes(countryCodes: List<String>) = applySelf { this.countryCodes = countryCodes }
+
+    fun countryCodes(vararg countryCodes: String) = countryCodes(countryCodes.toList())
 
 }
