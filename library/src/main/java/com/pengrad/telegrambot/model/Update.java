@@ -41,6 +41,7 @@ public class Update implements Serializable {
     private ChatBoostRemoved removed_chat_boost;
     private PaidMediaPurchased purchased_paid_media;
     private ManagedBotUpdated managed_bot;
+    private Message guest_message;
 
     public Integer updateId() {
         return update_id;
@@ -142,6 +143,10 @@ public class Update implements Serializable {
         return managed_bot;
     }
 
+    public Message guestMessage() {
+        return guest_message;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -171,7 +176,8 @@ public class Update implements Serializable {
                 Objects.equals(chat_boost, update.chat_boost) &&
                 Objects.equals(removed_chat_boost, update.removed_chat_boost) &&
                 Objects.equals(purchased_paid_media, update.purchased_paid_media) &&
-                Objects.equals(managed_bot, update.managed_bot);
+                Objects.equals(managed_bot, update.managed_bot) &&
+                Objects.equals(guest_message, update.guest_message);
     }
 
     @Override
@@ -207,6 +213,7 @@ public class Update implements Serializable {
                 ", removed_chat_boost=" + removed_chat_boost +
                 ", purchased_paid_media=" + purchased_paid_media +
                 ", managed_bot=" + managed_bot +
+                ", guest_message=" + guest_message +
                 '}';
     }
 }
