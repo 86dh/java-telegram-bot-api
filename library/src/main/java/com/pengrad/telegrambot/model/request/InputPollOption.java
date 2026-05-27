@@ -48,7 +48,7 @@ public class InputPollOption implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, text_parse_mode, text_entities);
+        return Objects.hash(text, text_parse_mode, text_entities, media);
     }
 
     @Override
