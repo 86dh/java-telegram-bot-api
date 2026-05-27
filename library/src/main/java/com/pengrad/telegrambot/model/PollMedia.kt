@@ -4,6 +4,7 @@ data class PollMedia(
     @get:JvmName("animation") val animation: Animation? = null,
     @get:JvmName("audio") val audio: Audio? = null,
     @get:JvmName("document") val document: Document? = null,
+    @get:JvmName("livePhoto") val livePhoto: LivePhoto? = null,
     @get:JvmName("location") val location: Location? = null,
     @get:JvmName("photo") val photo: Array<PhotoSize>? = null,
     @get:JvmName("sticker") val sticker: Sticker? = null,
@@ -16,6 +17,7 @@ data class PollMedia(
         return animation == other.animation &&
                 audio == other.audio &&
                 document == other.document &&
+                livePhoto == other.livePhoto &&
                 location == other.location &&
                 photo contentEquals other.photo &&
                 sticker == other.sticker &&
@@ -27,6 +29,7 @@ data class PollMedia(
         var result = animation?.hashCode() ?: 0
         result = 31 * result + (audio?.hashCode() ?: 0)
         result = 31 * result + (document?.hashCode() ?: 0)
+        result = 31 * result + (livePhoto?.hashCode() ?: 0)
         result = 31 * result + (location?.hashCode() ?: 0)
         result = 31 * result + (photo?.contentHashCode() ?: 0)
         result = 31 * result + (sticker?.hashCode() ?: 0)

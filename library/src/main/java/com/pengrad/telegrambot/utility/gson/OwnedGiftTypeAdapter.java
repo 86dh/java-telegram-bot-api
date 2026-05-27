@@ -4,10 +4,6 @@ import com.google.gson.*;
 import com.pengrad.telegrambot.model.gift.owned.OwnedGift;
 import com.pengrad.telegrambot.model.gift.owned.OwnedGiftRegular;
 import com.pengrad.telegrambot.model.gift.owned.OwnedGiftUnique;
-import com.pengrad.telegrambot.model.paidmedia.PaidMedia;
-import com.pengrad.telegrambot.model.paidmedia.PaidMediaPhoto;
-import com.pengrad.telegrambot.model.paidmedia.PaidMediaPreview;
-import com.pengrad.telegrambot.model.paidmedia.PaidMediaVideo;
 
 import java.lang.reflect.Type;
 

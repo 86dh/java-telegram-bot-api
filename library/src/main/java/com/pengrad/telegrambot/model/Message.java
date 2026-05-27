@@ -69,6 +69,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     private Document document;
     private Animation animation;
     private Game game;
+    private LivePhoto live_photo;
     private PhotoSize[] photo;
     private Sticker sticker;
     private Video video;
@@ -287,6 +288,10 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
 
     public Game game() {
         return game;
+    }
+
+    public LivePhoto livePhoto() {
+        return live_photo;
     }
 
     public PhotoSize[] photo() {
@@ -650,6 +655,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 Objects.equals(document, message.document) &&
                 Objects.equals(animation, message.animation) &&
                 Objects.equals(game, message.game) &&
+                Objects.equals(live_photo, message.live_photo) &&
                 Arrays.equals(photo, message.photo) &&
                 Objects.equals(sticker, message.sticker) &&
                 Objects.equals(video, message.video) &&
@@ -773,6 +779,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 ", document=" + document +
                 ", animation=" + animation +
                 ", game=" + game +
+                ", live_photo=" + live_photo +
                 ", photo=" + Arrays.toString(photo) +
                 ", sticker=" + sticker +
                 ", video=" + video +
