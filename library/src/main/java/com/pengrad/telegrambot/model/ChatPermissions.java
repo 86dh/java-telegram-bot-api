@@ -31,6 +31,7 @@ public class ChatPermissions implements Serializable {
     private Boolean can_edit_stories;
     private Boolean can_delete_stories;
     private Boolean can_edit_tag;
+    private Boolean can_react_to_messages;
 
     public Boolean canSendMessages() {
         return can_send_messages != null && can_send_messages;
@@ -102,6 +103,10 @@ public class ChatPermissions implements Serializable {
 
     public Boolean canEditTag() {
         return can_edit_tag != null && can_edit_tag;
+    }
+
+    public Boolean canReactToMessages() {
+        return can_react_to_messages != null && can_react_to_messages;
     }
 
     public ChatPermissions canSendMessages(boolean canSendMessages) {
@@ -194,6 +199,11 @@ public class ChatPermissions implements Serializable {
         return this;
     }
 
+    public ChatPermissions canReactToMessages(boolean canReactToMessages) {
+        this.can_react_to_messages = canReactToMessages;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -218,7 +228,8 @@ public class ChatPermissions implements Serializable {
                 Objects.equals(can_post_stories, that.can_post_stories) &&
                 Objects.equals(can_edit_stories, that.can_edit_stories) &&
                 Objects.equals(can_delete_stories, that.can_delete_stories) &&
-                Objects.equals(can_edit_tag, that.can_edit_tag);
+                Objects.equals(can_edit_tag, that.can_edit_tag) &&
+                Objects.equals(can_react_to_messages, that.can_react_to_messages);
     }
 
     @Override
@@ -240,7 +251,8 @@ public class ChatPermissions implements Serializable {
                 can_post_stories,
                 can_edit_stories,
                 can_delete_stories,
-                can_edit_tag);
+                can_edit_tag,
+                can_react_to_messages);
     }
 
     @Override
@@ -264,6 +276,7 @@ public class ChatPermissions implements Serializable {
                 ", can_edit_stories=" + can_edit_stories +
                 ", can_delete_stories=" + can_delete_stories +
                 ", can_edit_tag=" + can_edit_tag +
+                ", can_react_to_messages=" + can_react_to_messages +
                 '}';
     }
 }
