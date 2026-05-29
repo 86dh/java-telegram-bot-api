@@ -10,84 +10,125 @@ class SendLivePhoto private constructor(
     chatId: Long? = null,
     channelUsername: String? = null,
 
-    livePhotoUrl: String? = null,
     livePhotoFile: File? = null,
     livePhotoBytes: ByteArray? = null,
+
+    photoFile: File? = null,
+    photoBytes: ByteArray? = null,
 ) : AbstractMultipartRequest<SendLivePhoto>(
     chatId = chatId,
     channelUsername = channelUsername,
 
     contentParameterName = "live_photo",
-    contentUrl = livePhotoUrl,
+    contentUrl = null,
     contentFile = livePhotoFile,
     contentBytes = livePhotoBytes,
 
-    defaultFileName = ContentTypes.PHOTO_FILE_NAME,
-    defaultContentType = ContentTypes.PHOTO_MIME_TYPE,
+    defaultFileName = ContentTypes.VIDEO_FILE_NAME,
+    defaultContentType = ContentTypes.VIDEO_MIME_TYPE,
 ) {
 
-    constructor(chatId: Long, livePhotoUrl: String) : this(
-        chatId = chatId,
-        channelUsername = null,
-        livePhotoUrl = livePhotoUrl,
-    )
-
-    constructor(channelUsername: String, livePhotoUrl: String) : this(
-        chatId = null,
-        channelUsername = channelUsername,
-        livePhotoUrl = livePhotoUrl,
-    )
-
-    constructor(chatId: Long, livePhotoFile: File) : this(
+    constructor(chatId: Long, livePhotoFile: File, photoFile: File) : this(
         chatId = chatId,
         channelUsername = null,
         livePhotoFile = livePhotoFile,
+        photoFile = photoFile,
     )
 
-    constructor(channelUsername: String, livePhotoFile: File) : this(
+    constructor(channelUsername: String, livePhotoFile: File, photoFile: File) : this(
         chatId = null,
         channelUsername = channelUsername,
         livePhotoFile = livePhotoFile,
+        photoFile = photoFile,
     )
 
-    constructor(chatId: Long, livePhotoBytes: ByteArray) : this(
+    constructor(chatId: Long, livePhotoFile: File, photoBytes: ByteArray) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoFile = livePhotoFile,
+        photoBytes = photoBytes,
+    )
+
+    constructor(channelUsername: String, livePhotoFile: File, photoBytes: ByteArray) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoFile = livePhotoFile,
+        photoBytes = photoBytes,
+    )
+
+    constructor(chatId: Long, livePhotoBytes: ByteArray, photoFile: File) : this(
         chatId = chatId,
         channelUsername = null,
         livePhotoBytes = livePhotoBytes,
+        photoFile = photoFile,
     )
 
-    constructor(channelUsername: String, livePhotoBytes: ByteArray) : this(
+    constructor(channelUsername: String, livePhotoBytes: ByteArray, photoFile: File) : this(
         chatId = null,
         channelUsername = channelUsername,
         livePhotoBytes = livePhotoBytes,
+        photoFile = photoFile,
     )
 
-    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto)"))
-    constructor(chatId: Any, livePhoto: String) : this(
-        chatId = (chatId as? Number)?.toLong(),
-        channelUsername = chatId as? String,
-        livePhotoUrl = livePhoto,
-    ) {
-        checkDeprecatedConstructorParameters()
-    }
+    constructor(chatId: Long, livePhotoBytes: ByteArray, photoBytes: ByteArray) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoBytes = livePhotoBytes,
+        photoBytes = photoBytes,
+    )
 
-    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto)"))
-    constructor(chatId: Any, livePhoto: File) : this(
+    constructor(channelUsername: String, livePhotoBytes: ByteArray, photoBytes: ByteArray) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoBytes = livePhotoBytes,
+        photoBytes = photoBytes,
+    )
+
+    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto, photo)"))
+    constructor(chatId: Any, livePhoto: File, photo: File) : this(
         chatId = (chatId as? Number)?.toLong(),
         channelUsername = chatId as? String,
         livePhotoFile = livePhoto,
+        photoFile = photo,
     ) {
         checkDeprecatedConstructorParameters()
     }
 
-    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto)"))
-    constructor(chatId: Any, livePhoto: ByteArray) : this(
+    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto, photo)"))
+    constructor(chatId: Any, livePhoto: File, photo: ByteArray) : this(
         chatId = (chatId as? Number)?.toLong(),
         channelUsername = chatId as? String,
-        livePhotoBytes = livePhoto,
+        livePhotoFile = livePhoto,
+        photoBytes = photo,
     ) {
         checkDeprecatedConstructorParameters()
     }
+
+    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto, photo)"))
+    constructor(chatId: Any, livePhoto: ByteArray, photo: File) : this(
+        chatId = (chatId as? Number)?.toLong(),
+        channelUsername = chatId as? String,
+        livePhotoBytes = livePhoto,
+        photoFile = photo,
+    ) {
+        checkDeprecatedConstructorParameters()
+    }
+
+    @Deprecated("Use constructor with chatId or channelUsername instead", ReplaceWith("SendLivePhoto(chatId, livePhoto, photo)"))
+    constructor(chatId: Any, livePhoto: ByteArray, photo: ByteArray) : this(
+        chatId = (chatId as? Number)?.toLong(),
+        channelUsername = chatId as? String,
+        livePhotoBytes = livePhoto,
+        photoBytes = photo,
+    ) {
+        checkDeprecatedConstructorParameters()
+    }
+
+    val photoFile: File? by optionalRequestParameter(photoFile, customParameterName = "photo")
+    val photoBytes: ByteArray? by optionalRequestParameter(photoBytes, customParameterName = "photo")
+
+    override val isMultipartRequest: Boolean
+        get() = super.isMultipartRequest || photoFile != null || photoBytes != null
 
     var caption: String? by optionalRequestParameter()
     var parseMode: ParseMode? by optionalRequestParameter()

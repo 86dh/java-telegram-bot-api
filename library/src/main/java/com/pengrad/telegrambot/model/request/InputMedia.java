@@ -12,7 +12,7 @@ import java.util.Map;
  * Stas Parshin
  * 23 November 2017
  */
-abstract public class InputMedia<T extends InputMedia<T>> implements Serializable, InputPollMedia, InputPollOptionMedia {
+abstract public class InputMedia<T extends InputMedia<T>> implements Serializable {
     private final static long serialVersionUID = 0L;
 
     @SuppressWarnings("unchecked")

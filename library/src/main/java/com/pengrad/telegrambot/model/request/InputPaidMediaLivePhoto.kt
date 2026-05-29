@@ -5,10 +5,32 @@ import java.io.File
 
 class InputPaidMediaLivePhoto : InputPaidMedia {
 
-    constructor(media: String) : super("live_photo", media)
-    constructor(media: File) : super("live_photo", media)
-    constructor(media: ByteArray) : super("live_photo", media)
+    private var photo: String? = null
 
-    override fun getDefaultFileName(): String = ContentTypes.PHOTO_FILE_NAME
-    override fun getDefaultContentType(): String = ContentTypes.PHOTO_MIME_TYPE
+    constructor(media: String, photo: File) : super("live_photo", media) {
+        this.photo = addAttachment(photo)
+    }
+
+    constructor(media: String, photo: ByteArray) : super("live_photo", media) {
+        this.photo = addAttachment(photo)
+    }
+
+    constructor(media: File, photo: File) : super("live_photo", media) {
+        this.photo = addAttachment(photo)
+    }
+
+    constructor(media: File, photo: ByteArray) : super("live_photo", media) {
+        this.photo = addAttachment(photo)
+    }
+
+    constructor(media: ByteArray, photo: File) : super("live_photo", media) {
+        this.photo = addAttachment(photo)
+    }
+
+    constructor(media: ByteArray, photo: ByteArray) : super("live_photo", media) {
+        this.photo = addAttachment(photo)
+    }
+
+    override fun getDefaultFileName(): String = ContentTypes.VIDEO_FILE_NAME
+    override fun getDefaultContentType(): String = ContentTypes.VIDEO_MIME_TYPE
 }

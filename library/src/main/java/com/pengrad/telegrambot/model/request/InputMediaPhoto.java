@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Stas Parshin
  * 23 November 2017
  */
-public class InputMediaPhoto extends InputMedia<InputMediaPhoto> implements Serializable {
+public class InputMediaPhoto extends InputMedia<InputMediaPhoto> implements Serializable, InputPollMedia, InputPollOptionMedia {
     private final static long serialVersionUID = 1L;
 
     private Boolean has_spoiler;

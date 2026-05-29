@@ -2,7 +2,7 @@ package com.pengrad.telegrambot.model.request
 
 import java.io.File
 
-class InputMediaSticker : InputMedia<InputMediaSticker> {
+class InputMediaSticker : InputMedia<InputMediaSticker>, InputPollOptionMedia {
 
     constructor(media: String) : super("sticker", media)
     constructor(media: File) : super("sticker", media)

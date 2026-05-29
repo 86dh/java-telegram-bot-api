@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Stas Parshin
  * 28 July 2018
  */
-public class InputMediaAudio extends InputMedia<InputMediaAudio> implements Serializable {
+public class InputMediaAudio extends InputMedia<InputMediaAudio> implements Serializable, InputPollMedia {
     private final static long serialVersionUID = 0L;
 
     private Integer duration;

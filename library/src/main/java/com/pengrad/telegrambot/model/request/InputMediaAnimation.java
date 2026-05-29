@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Stas Parshin
  * 28 July 2018
  */
-public class InputMediaAnimation extends InputMedia<InputMediaAnimation> implements Serializable {
+public class InputMediaAnimation extends InputMedia<InputMediaAnimation> implements Serializable, InputPollMedia, InputPollOptionMedia {
     private final static long serialVersionUID = 0L;
 
     private Integer width, height, duration;
