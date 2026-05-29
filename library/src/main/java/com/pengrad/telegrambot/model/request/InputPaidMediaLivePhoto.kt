@@ -31,6 +31,18 @@ class InputPaidMediaLivePhoto : InputPaidMedia {
         this.photo = addAttachment(photo)
     }
 
+    constructor(media: String, photo: String) : super("live_photo", media) {
+        this.photo = photo
+    }
+
+    constructor(media: File, photo: String) : super("live_photo", media) {
+        this.photo = photo
+    }
+
+    constructor(media: ByteArray, photo: String) : super("live_photo", media) {
+        this.photo = photo
+    }
+
     override fun getDefaultFileName(): String = ContentTypes.VIDEO_FILE_NAME
     override fun getDefaultContentType(): String = ContentTypes.VIDEO_MIME_TYPE
 }

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Java library for the [Telegram Bot API](https://core.telegram.org/bots/api), published to Maven Central as `com.github.pengrad:java-telegram-bot-api`. It provides type-safe wrappers for all Telegram Bot API methods and models.
+This is a JVM library for the [Telegram Bot API](https://core.telegram.org/bots/api), published to Maven Central as `com.github.pengrad:java-telegram-bot-api`. It provides type-safe wrappers for all Telegram Bot API methods and models. The codebase is mixed **Java and Kotlin** — the original core is Java, while newer request/model/response classes and the idiomatic DSL layer are written in Kotlin (Kotlin Gradle plugin 1.9.22).
 
 ## Build and Test Commands
 
@@ -15,8 +15,12 @@ This is a Java library for the [Telegram Bot API](https://core.telegram.org/bots
 # Run all tests (requires env vars - see Testing section)
 ./gradlew clean check
 
-# Run PR tests (excludes long-running integration tests)
+# Run PR tests (excludes long-running integration tests:
+# Base64Test, CheckTelegramAuthTest, PaymentsTest, TelegramBotTest, UpdatesListenerTest)
 ./gradlew clean check -PprTest
+
+# Exclude an arbitrary test pattern
+./gradlew test -PexcludeTests='**/SomeTest.class'
 
 # Run a specific test class
 ./gradlew test --tests com.pengrad.telegrambot.TelegramBotTest
@@ -61,11 +65,18 @@ Internally, `TelegramBotClient` serializes the request to an HTTP POST using Gso
 
 ### Package Structure
 
-- `request.*` — ~100+ request classes, one per Telegram API method (e.g., `SendMessage`, `GetUpdates`, `AnswerCallbackQuery`)
-- `model.*` — ~100+ model classes for Telegram types (e.g., `Message`, `User`, `Chat`, `Update`)
+- `request.*` — ~150 request classes, one per Telegram API method (e.g., `SendMessage`, `GetUpdates`, `AnswerCallbackQuery`). Sub-packages group newer features, e.g. `request.business.*`, `request.suggestedposts.*`.
+- `model.*` — ~190 model classes for Telegram types (e.g., `Message`, `User`, `Chat`, `Update`), with many feature sub-packages (`model.business`, `model.gift`, `model.stars`, `model.story`, `model.checklist`, `model.reaction`, `model.paidmedia`, `model.botcommandscope`, etc.).
 - `response.*` — Typed response wrappers (e.g., `SendResponse`, `GetUpdatesResponse`)
 - `passport.*` — Telegram Passport decryption logic
-- `impl.*` — Internal HTTP client and update handler implementations
+- `login.*` — `CheckTelegramAuth` (Telegram Login widget verification)
+- `constants.*` — shared enums/constants (e.g., `LivePeriod`)
+- `utility.*` — `BotUtils` (webhook/update parsing helpers), Gson type adapters (`utility.gson`), and the Kotlin DSL layer (`utility.kotlin`, including `utility.kotlin.extension` request extensions)
+- `impl.*` — Internal HTTP client (`TelegramBotClient`, `FileApi`) and update handlers (`UpdatesHandler`, `SleepUpdatesHandler`)
+
+### Kotlin DSL Layer
+
+In addition to the Java fluent builders, the library ships idiomatic Kotlin extension functions in `utility.kotlin.extension.request.*`. These hang off the `TelegramAware` interface (implemented by `TelegramBot`) and take a trailing `modifier: Request.() -> Unit` lambda, e.g. `bot.sendMessage(chatId, "text") { parseMode(ParseMode.HTML) }`. `RequestPreprocessor` is a hook applied to every outgoing request (default `EMPTY_REQUEST_PREPROCESSOR`).
 
 ### Update Processing
 
@@ -79,5 +90,6 @@ The `UpdatesHandler` / `SleepUpdatesHandler` classes manage the polling loop int
 
 - Every Telegram API method maps 1:1 to a class in `request.*` and a class in `response.*`.
 - Request classes use a fluent builder pattern: `new SendMessage(chatId, text).parseMode(ParseMode.HTML).replyMarkup(keyboard)`.
-- All model and request classes follow Telegram API naming closely (snake_case field names deserialized by Gson into camelCase Java fields).
-- The library targets Java 8 runtime compatibility, though JDK 11+ is required to build.
+- All model and request classes follow Telegram API naming closely (snake_case field names deserialized by Gson into camelCase fields).
+- New classes are increasingly written in Kotlin (often data classes / `KBaseRequest`-based requests); follow the language already used by sibling classes in the same package when adding code.
+- The library targets Java 8 runtime compatibility (`sourceCompatibility`/`targetCompatibility = 1.8`), though JDK 11+ is required to build.

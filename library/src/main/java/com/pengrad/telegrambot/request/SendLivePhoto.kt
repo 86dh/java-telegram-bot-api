@@ -10,9 +10,11 @@ class SendLivePhoto private constructor(
     chatId: Long? = null,
     channelUsername: String? = null,
 
+    livePhotoId: String? = null,
     livePhotoFile: File? = null,
     livePhotoBytes: ByteArray? = null,
 
+    photoId: String? = null,
     photoFile: File? = null,
     photoBytes: ByteArray? = null,
 ) : AbstractMultipartRequest<SendLivePhoto>(
@@ -20,13 +22,69 @@ class SendLivePhoto private constructor(
     channelUsername = channelUsername,
 
     contentParameterName = "live_photo",
-    contentUrl = null,
+    contentUrl = livePhotoId,
     contentFile = livePhotoFile,
     contentBytes = livePhotoBytes,
 
     defaultFileName = ContentTypes.VIDEO_FILE_NAME,
     defaultContentType = ContentTypes.VIDEO_MIME_TYPE,
 ) {
+
+    constructor(chatId: Long, livePhotoId: String, photoId: String) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoId = livePhotoId,
+        photoId = photoId,
+    )
+
+    constructor(channelUsername: String, livePhotoId: String, photoId: String) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoId = livePhotoId,
+        photoId = photoId,
+    )
+
+    constructor(chatId: Long, livePhotoId: String, photoFile: File) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoId = livePhotoId,
+        photoFile = photoFile,
+    )
+
+    constructor(channelUsername: String, livePhotoId: String, photoFile: File) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoId = livePhotoId,
+        photoFile = photoFile,
+    )
+
+    constructor(chatId: Long, livePhotoId: String, photoBytes: ByteArray) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoId = livePhotoId,
+        photoBytes = photoBytes,
+    )
+
+    constructor(channelUsername: String, livePhotoId: String, photoBytes: ByteArray) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoId = livePhotoId,
+        photoBytes = photoBytes,
+    )
+
+    constructor(chatId: Long, livePhotoFile: File, photoId: String) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoFile = livePhotoFile,
+        photoId = photoId,
+    )
+
+    constructor(channelUsername: String, livePhotoFile: File, photoId: String) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoFile = livePhotoFile,
+        photoId = photoId,
+    )
 
     constructor(chatId: Long, livePhotoFile: File, photoFile: File) : this(
         chatId = chatId,
@@ -54,6 +112,20 @@ class SendLivePhoto private constructor(
         channelUsername = channelUsername,
         livePhotoFile = livePhotoFile,
         photoBytes = photoBytes,
+    )
+
+    constructor(chatId: Long, livePhotoBytes: ByteArray, photoId: String) : this(
+        chatId = chatId,
+        channelUsername = null,
+        livePhotoBytes = livePhotoBytes,
+        photoId = photoId,
+    )
+
+    constructor(channelUsername: String, livePhotoBytes: ByteArray, photoId: String) : this(
+        chatId = null,
+        channelUsername = channelUsername,
+        livePhotoBytes = livePhotoBytes,
+        photoId = photoId,
     )
 
     constructor(chatId: Long, livePhotoBytes: ByteArray, photoFile: File) : this(
@@ -124,6 +196,7 @@ class SendLivePhoto private constructor(
         checkDeprecatedConstructorParameters()
     }
 
+    val photoId: String? by optionalRequestParameter(photoId, customParameterName = "photo")
     val photoFile: File? by optionalRequestParameter(photoFile, customParameterName = "photo")
     val photoBytes: ByteArray? by optionalRequestParameter(photoBytes, customParameterName = "photo")
 

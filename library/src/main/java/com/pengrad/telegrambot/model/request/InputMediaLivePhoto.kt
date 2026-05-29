@@ -32,6 +32,18 @@ class InputMediaLivePhoto : InputMedia<InputMediaLivePhoto>, InputPollMedia, Inp
         this.photo = addAttachment(photo)
     }
 
+    constructor(media: String, photo: String) : super("live_photo", media) {
+        this.photo = photo
+    }
+
+    constructor(media: File, photo: String) : super("live_photo", media) {
+        this.photo = photo
+    }
+
+    constructor(media: ByteArray, photo: String) : super("live_photo", media) {
+        this.photo = photo
+    }
+
     fun hasSpoiler(hasSpoiler: Boolean): InputMediaLivePhoto {
         this.has_spoiler = hasSpoiler
         return this
