@@ -18,6 +18,7 @@ public class PollOption implements Serializable {
     private User added_by_user;
     private Chat added_by_chat;
     private Integer addition_date;
+    private PollMedia media;
 
     public String persistentId() {
         return persistent_id;
@@ -47,6 +48,10 @@ public class PollOption implements Serializable {
         return addition_date;
     }
 
+    public PollMedia media() {
+        return media;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,7 +66,8 @@ public class PollOption implements Serializable {
         if (voter_count != null ? !voter_count.equals(that.voter_count) : that.voter_count != null) return false;
         if (!Objects.equals(added_by_user, that.added_by_user)) return false;
         if (!Objects.equals(added_by_chat, that.added_by_chat)) return false;
-        return Objects.equals(addition_date, that.addition_date);
+        if (!Objects.equals(addition_date, that.addition_date)) return false;
+        return Objects.equals(media, that.media);
     }
 
     @Override
@@ -72,6 +78,7 @@ public class PollOption implements Serializable {
         result = 31 * result + (added_by_user != null ? added_by_user.hashCode() : 0);
         result = 31 * result + (added_by_chat != null ? added_by_chat.hashCode() : 0);
         result = 31 * result + (addition_date != null ? addition_date.hashCode() : 0);
+        result = 31 * result + (media != null ? media.hashCode() : 0);
         return result;
     }
 
@@ -85,6 +92,7 @@ public class PollOption implements Serializable {
                 ", added_by_user=" + added_by_user +
                 ", added_by_chat=" + added_by_chat +
                 ", addition_date=" + addition_date +
+                ", media=" + media +
                 '}';
     }
 }

@@ -31,6 +31,10 @@ public class Poll implements Serializable {
     private Integer close_date;
     private String description;
     private MessageEntity[] description_entities;
+    private PollMedia media;
+    private PollMedia explanation_media;
+    private Boolean members_only;
+    private String[] country_codes;
 
     public String id() {
         return id;
@@ -104,6 +108,22 @@ public class Poll implements Serializable {
         return description_entities;
     }
 
+    public PollMedia media() {
+        return media;
+    }
+
+    public PollMedia explanationMedia() {
+        return explanation_media;
+    }
+
+    public Boolean membersOnly() {
+        return members_only;
+    }
+
+    public String[] countryCodes() {
+        return country_codes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -130,7 +150,11 @@ public class Poll implements Serializable {
         if (open_period != null ? !open_period.equals(poll.open_period) : poll.open_period != null) return false;
         if (close_date != null ? !close_date.equals(poll.close_date) : poll.close_date != null) return false;
         if (description != null ? !description.equals(poll.description) : poll.description != null) return false;
-        return Arrays.equals(description_entities, poll.description_entities);
+        if (!Arrays.equals(description_entities, poll.description_entities)) return false;
+        if (media != null ? !media.equals(poll.media) : poll.media != null) return false;
+        if (explanation_media != null ? !explanation_media.equals(poll.explanation_media) : poll.explanation_media != null) return false;
+        if (members_only != null ? !members_only.equals(poll.members_only) : poll.members_only != null) return false;
+        return Arrays.equals(country_codes, poll.country_codes);
     }
 
     @Override
@@ -158,6 +182,10 @@ public class Poll implements Serializable {
                 ", close_date=" + close_date +
                 ", description='" + description + '\'' +
                 ", description_entities=" + Arrays.toString(description_entities) +
+                ", media=" + media +
+                ", explanation_media=" + explanation_media +
+                ", members_only=" + members_only +
+                ", country_codes=" + Arrays.toString(country_codes) +
                 '}';
     }
 }

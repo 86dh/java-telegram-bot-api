@@ -9,16 +9,21 @@ import com.pengrad.telegrambot.utility.kotlin.requestParameter
 class SendMessageDraft(
     chatId: Long,
     draftId: Int,
-    text: String
 ) : KBaseRequest<SendMessageDraft, BaseResponse>(BaseResponse::class) {
+
+    constructor(chatId: Long, draftId: Int, text: String) : this(chatId, draftId) {
+        this.text = text
+    }
 
     val chatId: Long by requestParameter(chatId)
     val draftId: Int by requestParameter(draftId)
-    val text: String by requestParameter(text)
 
+    var text: String? by optionalRequestParameter()
     var messageThreadId: Long? by optionalRequestParameter()
     var parseMode: ParseMode? by optionalRequestParameter()
     var entities: List<MessageEntity>? by optionalRequestParameter()
+
+    fun text(text: String) = applySelf { this.text = text }
 
     fun messageThreadId(messageThreadId: Long) = applySelf { this.messageThreadId = messageThreadId }
 

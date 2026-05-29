@@ -69,6 +69,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     private Document document;
     private Animation animation;
     private Game game;
+    private LivePhoto live_photo;
     private PhotoSize[] photo;
     private Sticker sticker;
     private Video video;
@@ -140,6 +141,9 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     private PollOptionAdded poll_option_added;
     private PollOptionDeleted poll_option_deleted;
     private String reply_to_poll_option_id;
+    private User guest_bot_caller_user;
+    private Chat guest_bot_caller_chat;
+    private String guest_query_id;
 
     public Long messageThreadId() {
         return message_thread_id;
@@ -284,6 +288,10 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
 
     public Game game() {
         return game;
+    }
+
+    public LivePhoto livePhoto() {
+        return live_photo;
     }
 
     public PhotoSize[] photo() {
@@ -570,6 +578,18 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
         return reply_to_poll_option_id;
     }
 
+    public User guestBotCallerUser() {
+        return guest_bot_caller_user;
+    }
+
+    public Chat guestBotCallerChat() {
+        return guest_bot_caller_chat;
+    }
+
+    public String guestQueryId() {
+        return guest_query_id;
+    }
+
     /**
      * Only for backwards-compatibility with MaybeInaccessibleMessage
      */
@@ -635,6 +655,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 Objects.equals(document, message.document) &&
                 Objects.equals(animation, message.animation) &&
                 Objects.equals(game, message.game) &&
+                Objects.equals(live_photo, message.live_photo) &&
                 Arrays.equals(photo, message.photo) &&
                 Objects.equals(sticker, message.sticker) &&
                 Objects.equals(video, message.video) &&
@@ -705,7 +726,10 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 Objects.equals(managed_bot_created, message.managed_bot_created) &&
                 Objects.equals(poll_option_added, message.poll_option_added) &&
                 Objects.equals(poll_option_deleted, message.poll_option_deleted) &&
-                Objects.equals(reply_to_poll_option_id, message.reply_to_poll_option_id);
+                Objects.equals(reply_to_poll_option_id, message.reply_to_poll_option_id) &&
+                Objects.equals(guest_bot_caller_user, message.guest_bot_caller_user) &&
+                Objects.equals(guest_bot_caller_chat, message.guest_bot_caller_chat) &&
+                Objects.equals(guest_query_id, message.guest_query_id);
     }
 
     @Override
@@ -755,6 +779,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 ", document=" + document +
                 ", animation=" + animation +
                 ", game=" + game +
+                ", live_photo=" + live_photo +
                 ", photo=" + Arrays.toString(photo) +
                 ", sticker=" + sticker +
                 ", video=" + video +
@@ -826,6 +851,9 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 ", poll_option_added=" + poll_option_added +
                 ", poll_option_deleted=" + poll_option_deleted +
                 ", reply_to_poll_option_id='" + reply_to_poll_option_id + '\'' +
+                ", guest_bot_caller_user=" + guest_bot_caller_user +
+                ", guest_bot_caller_chat=" + guest_bot_caller_chat +
+                ", guest_query_id='" + guest_query_id + '\'' +
                 '}';
     }
 }

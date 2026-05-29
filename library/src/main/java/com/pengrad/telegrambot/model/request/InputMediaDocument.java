@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Stas Parshin
  * 28 July 2018
  */
-public class InputMediaDocument extends InputMedia<InputMediaDocument> implements Serializable {
+public class InputMediaDocument extends InputMedia<InputMediaDocument> implements Serializable, InputPollMedia {
     private final static long serialVersionUID = 0L;
 
     private Boolean disable_content_type_detection;
