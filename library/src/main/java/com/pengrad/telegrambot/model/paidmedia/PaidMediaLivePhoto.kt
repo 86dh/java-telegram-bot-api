@@ -1,6 +1,7 @@
 package com.pengrad.telegrambot.model.paidmedia
 
 import com.pengrad.telegrambot.model.LivePhoto
+import java.util.Objects
 
 class PaidMediaLivePhoto : PaidMedia("live_photo") {
 
@@ -18,7 +19,7 @@ class PaidMediaLivePhoto : PaidMedia("live_photo") {
         return type() == that.type() && livePhoto == that.livePhoto
     }
 
-    override fun hashCode(): Int = 31 * type().hashCode() + (livePhoto?.hashCode() ?: 0)
+    override fun hashCode(): Int = Objects.hash(type(), livePhoto)
 
     override fun toString(): String = "PaidMediaLivePhoto{livePhoto=$livePhoto}"
 }
