@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a JVM library for the [Telegram Bot API](https://core.telegram.org/bots/api), published to Maven Central as `com.github.pengrad:java-telegram-bot-api`. It provides type-safe wrappers for all Telegram Bot API methods and models. The codebase is mixed **Java and Kotlin** — the original core is Java, while newer request/model/response classes and the idiomatic DSL layer are written in Kotlin (Kotlin Gradle plugin 1.9.22).
+This is a JVM library for the [Telegram Bot API](https://core.telegram.org/bots/api), published to Maven Central as `com.github.pengrad:java-telegram-bot-api`. It provides type-safe wrappers for all Telegram Bot API methods and models. The codebase is mixed **Java and Kotlin** — the original core is Java, while newer request/model/response classes and the idiomatic DSL layer are written in Kotlin (Kotlin Gradle plugin 2.3.21).
 
 ## Build and Test Commands
 
