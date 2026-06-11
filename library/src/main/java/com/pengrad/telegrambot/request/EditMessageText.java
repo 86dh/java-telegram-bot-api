@@ -24,6 +24,16 @@ public class EditMessageText extends BaseRequest<EditMessageText, BaseResponse> 
         add("inline_message_id", inlineMessageId).add("text", text);
     }
 
+    public EditMessageText(Object chatId, int messageId, InputRichMessage richMessage) {
+        super(SendResponse.class);
+        add("chat_id", chatId).add("message_id", messageId).add("rich_message", richMessage);
+    }
+
+    public EditMessageText(String inlineMessageId, InputRichMessage richMessage) {
+        super(BaseResponse.class);
+        add("inline_message_id", inlineMessageId).add("rich_message", richMessage);
+    }
+
     public EditMessageText parseMode(ParseMode parseMode) {
         return add("parse_mode", parseMode.name());
     }
