@@ -17,6 +17,7 @@ import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
 import com.pengrad.telegrambot.model.message.origin.*;
 import com.pengrad.telegrambot.model.paidmedia.PaidMediaInfo;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
+import com.pengrad.telegrambot.model.richmessages.RichMessage;
 import com.pengrad.telegrambot.model.stars.DirectMessagePriceChanged;
 import com.pengrad.telegrambot.model.stars.PaidMessagePriceChanged;
 import com.pengrad.telegrambot.model.suggestedposts.*;
@@ -64,6 +65,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     private LinkPreviewOptions link_preview_options;
     private SuggestedPostInfo suggested_post_info;
     private String effect_id;
+    private RichMessage rich_message;
     private Audio audio;
     private PaidMediaInfo paid_media;
     private Document document;
@@ -268,6 +270,10 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
 
     public String effectId() {
         return effect_id;
+    }
+
+    public RichMessage richMessage() {
+        return rich_message;
     }
 
     public Audio audio() {
@@ -650,6 +656,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 Objects.equals(link_preview_options, message.link_preview_options) &&
                 Objects.equals(suggested_post_info, message.suggested_post_info) &&
                 Objects.equals(effect_id, message.effect_id) &&
+                Objects.equals(rich_message, message.rich_message) &&
                 Objects.equals(audio, message.audio) &&
                 Objects.equals(paid_media, message.paid_media) &&
                 Objects.equals(document, message.document) &&
@@ -774,6 +781,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
                 ", link_preview_options=" + link_preview_options +
                 ", suggested_post_info=" + suggested_post_info +
                 ", effect_id=" + effect_id +
+                ", rich_message=" + rich_message +
                 ", audio=" + audio +
                 ", paid_media=" + paid_media +
                 ", document=" + document +
