@@ -16,7 +16,7 @@ public class ChatInviteLink implements Serializable {
     private Boolean is_primary;
     private Boolean is_revoked;
     private String name;
-    private Integer expire_date;
+    private Long expire_date;
     private Integer member_limit;    
     private Integer pending_join_request_count;
    
@@ -45,7 +45,7 @@ public class ChatInviteLink implements Serializable {
         return name;
     }
 
-    public Integer expireDate() {
+    public Long expireDate() {
         return expire_date;
     }
 

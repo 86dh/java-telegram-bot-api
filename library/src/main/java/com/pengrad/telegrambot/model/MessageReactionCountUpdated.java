@@ -9,7 +9,7 @@ public class MessageReactionCountUpdated {
 
     private Chat chat;
     private Integer message_id;
-    private Integer date;
+    private Long date;
     private ReactionCount[] reactions;
 
     public Chat chat() {
@@ -20,7 +20,7 @@ public class MessageReactionCountUpdated {
         return message_id;
     }
 
-    public Integer date() {
+    public Long date() {
         return date;
     }
 

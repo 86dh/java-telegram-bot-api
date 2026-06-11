@@ -6,11 +6,11 @@ import com.pengrad.telegrambot.utility.kotlin.requestParameter
 class SetUserEmojiStatus(
     userId: Long,
     emojiStatusCustomEmojiId: String,
-    emojiStatusExpirationDate: Int
+    emojiStatusExpirationDate: Long
 ) : KBaseRequest<SetUserEmojiStatus, BaseResponse>(BaseResponse::class) {
 
     val userId: Long by requestParameter(userId)
     val emojiStatusCustomEmojiId: String by requestParameter(emojiStatusCustomEmojiId)
-    val emojiStatusExpirationDate: Int by requestParameter(emojiStatusExpirationDate)
+    val emojiStatusExpirationDate: Long by requestParameter(emojiStatusExpirationDate)
 
 }

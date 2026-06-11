@@ -12,7 +12,7 @@ public class PassportFile implements Serializable {
     private String file_id;
     private String file_unique_id;
     private Long file_size;
-    private Integer file_date;
+    private Long file_date;
 
     public String fileId() {
         return file_id;
@@ -26,7 +26,7 @@ public class PassportFile implements Serializable {
         return file_size;
     }
 
-    public Integer fileDate() {
+    public Long fileDate() {
         return file_date;
     }
 

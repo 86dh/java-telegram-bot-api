@@ -9,7 +9,7 @@ public class ChatBoostRemoved {
 
     private Chat chat;
     private String boost_id;
-    private Integer remove_date;
+    private Long remove_date;
     private ChatBoostSource source;
 
     public Chat chat() {
@@ -20,7 +20,7 @@ public class ChatBoostRemoved {
         return boost_id;
     }
 
-    public Integer removeDate() {
+    public Long removeDate() {
         return remove_date;
     }
 

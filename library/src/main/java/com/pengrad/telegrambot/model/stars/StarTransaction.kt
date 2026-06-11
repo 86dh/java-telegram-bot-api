@@ -6,7 +6,7 @@ data class StarTransaction(
     @get:JvmName("id") val id: String,
     @get:JvmName("amount") val amount: Int,
     @get:JvmName("nanostarAmount") val nanostarAmount: Int? = null,
-    @get:JvmName("date") val date: Int,
+    @get:JvmName("date") val date: Long,
     @get:JvmName("source") val source: TransactionPartner? = null,
     @get:JvmName("receiver") val receiver: TransactionPartner? = null
 )

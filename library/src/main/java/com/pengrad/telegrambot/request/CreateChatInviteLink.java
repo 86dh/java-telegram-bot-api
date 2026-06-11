@@ -21,7 +21,7 @@ public class CreateChatInviteLink extends BaseRequest<CreateChatInviteLink, Chat
         return add("name", name);
     }
 
-    public CreateChatInviteLink expireDate(Integer expireDate) {
+    public CreateChatInviteLink expireDate(Long expireDate) {
         return add("expire_date", expireDate);
     }
 

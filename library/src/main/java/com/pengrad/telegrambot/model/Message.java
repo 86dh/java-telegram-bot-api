@@ -51,7 +51,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     private Story reply_to_story;
     private Integer reply_to_checklist_task_id;
     private User via_bot;
-    private Integer edit_date;
+    private Long edit_date;
     private Boolean has_protected_content;
     private Boolean is_from_offline;
     private Boolean is_paid_post;
@@ -215,7 +215,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
         return via_bot;
     }
 
-    public Integer editDate() {
+    public Long editDate() {
         return edit_date;
     }
 
@@ -613,7 +613,7 @@ public class Message extends MaybeInaccessibleMessage implements Serializable {
     /**
      * Only for backwards-compatibility with MaybeInaccessibleMessage
      */
-    void setDate(Integer date) {
+    void setDate(Long date) {
         this.date = date;
     }
 

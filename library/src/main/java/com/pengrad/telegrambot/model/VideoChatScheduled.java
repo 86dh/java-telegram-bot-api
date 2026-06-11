@@ -7,9 +7,9 @@ public class VideoChatScheduled implements Serializable {
 
     private final static long serialVersionUID = 0L;
 
-    private Integer start_date;
+    private Long start_date;
 
-    public Integer startDate() {
+    public Long startDate() {
         return start_date;
     }
 

@@ -9,7 +9,7 @@ public class BusinessConnection {
     private String id;
     private User user;
     private Long user_chat_id;
-    private Integer date;
+    private Long date;
     private BusinessBotRights rights;
     private Boolean is_enabled;
 
@@ -25,7 +25,7 @@ public class BusinessConnection {
         return user_chat_id;
     }
 
-    public Integer date() {
+    public Long date() {
         return date;
     }
 
