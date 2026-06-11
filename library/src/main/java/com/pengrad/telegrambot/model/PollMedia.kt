@@ -10,6 +10,7 @@ data class PollMedia(
     @get:JvmName("sticker") val sticker: Sticker? = null,
     @get:JvmName("venue") val venue: Venue? = null,
     @get:JvmName("video") val video: Video? = null,
+    @get:JvmName("link") val link: Link? = null,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -22,7 +23,8 @@ data class PollMedia(
                 photo contentEquals other.photo &&
                 sticker == other.sticker &&
                 venue == other.venue &&
-                video == other.video
+                video == other.video &&
+                link == other.link
     }
 
     override fun hashCode(): Int {
@@ -35,6 +37,7 @@ data class PollMedia(
         result = 31 * result + (sticker?.hashCode() ?: 0)
         result = 31 * result + (venue?.hashCode() ?: 0)
         result = 31 * result + (video?.hashCode() ?: 0)
+        result = 31 * result + (link?.hashCode() ?: 0)
         return result
     }
 }
