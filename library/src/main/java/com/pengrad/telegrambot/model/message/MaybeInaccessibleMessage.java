@@ -8,7 +8,7 @@ public class MaybeInaccessibleMessage {
 
     protected Chat chat;
     protected Integer message_id;
-    protected Long date;
+    protected Integer date;
 
     public Chat chat() {
         return chat;
@@ -18,7 +18,7 @@ public class MaybeInaccessibleMessage {
         return message_id;
     }
 
-    public Long date() {
+    public Integer date() {
         return date;
     }
 

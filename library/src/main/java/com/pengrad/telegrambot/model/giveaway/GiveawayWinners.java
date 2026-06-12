@@ -13,7 +13,7 @@ public class GiveawayWinners implements Serializable {
 
     private Chat chat;
     private Integer giveaway_message_id;
-    private Long winners_selection_date;
+    private Integer winners_selection_date;
     private Integer winner_count;
     private User[] winners;
     private Integer additional_chat_count;
@@ -32,7 +32,7 @@ public class GiveawayWinners implements Serializable {
         return giveaway_message_id;
     }
 
-    public Long winnersSelectionDate() {
+    public Integer winnersSelectionDate() {
         return winners_selection_date;
     }
 

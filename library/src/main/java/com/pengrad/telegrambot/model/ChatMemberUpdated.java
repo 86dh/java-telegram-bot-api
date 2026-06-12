@@ -12,7 +12,7 @@ public class ChatMemberUpdated implements Serializable {
 
     private Chat chat;
     private User from;
-    private Long date;
+    private Integer date;
     private ChatMember old_chat_member;
     private ChatMember new_chat_member;
     private ChatInviteLink invite_link;
@@ -27,7 +27,7 @@ public class ChatMemberUpdated implements Serializable {
         return from;
     }
 
-    public Long date() {
+    public Integer date() {
         return date;
     }
 

@@ -51,7 +51,7 @@ public class ChatFullInfo implements Serializable {
     private Integer profile_accent_color_id;
     private String profile_background_custom_emoji_id;
     private String emoji_status_custom_emoji_id;
-    private Long emoji_status_expiration_date;
+    private Integer emoji_status_expiration_date;
     private String bio;
     private Boolean has_private_forwards;
     private Boolean has_restricted_voice_and_video_messages;
@@ -173,7 +173,7 @@ public class ChatFullInfo implements Serializable {
         return emoji_status_custom_emoji_id;
     }
 
-    public Long emojiStatusExpirationDate() {
+    public Integer emojiStatusExpirationDate() {
         return emoji_status_expiration_date;
     }
 

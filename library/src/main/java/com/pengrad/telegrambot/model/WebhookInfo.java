@@ -15,9 +15,9 @@ public class WebhookInfo implements Serializable {
     private Boolean has_custom_certificate;
     private Integer pending_update_count;
     private String ip_address;
-    private Long last_error_date;
+    private Integer last_error_date;
     private String last_error_message;
-    private Long last_synchronization_error_date;
+    private Integer last_synchronization_error_date;
     private Integer max_connections;
     private String[] allowed_updates;
 
@@ -37,7 +37,7 @@ public class WebhookInfo implements Serializable {
         return ip_address;
     }
 
-    public Long lastErrorDate() {
+    public Integer lastErrorDate() {
         return last_error_date;
     }
 
@@ -45,7 +45,7 @@ public class WebhookInfo implements Serializable {
         return last_error_message;
     }
 
-    public Long lastSynchronizationErrorDate() {
+    public Integer lastSynchronizationErrorDate() {
         return last_synchronization_error_date;
     }
 

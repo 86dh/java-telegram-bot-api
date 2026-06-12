@@ -1062,7 +1062,7 @@ public class TelegramBotTest {
         assertTrue(webhookInfo.hasCustomCertificate());
         assertEquals(maxConnections, webhookInfo.maxConnections());
         assertArrayEquals(allowedUpdates, webhookInfo.allowedUpdates());
-        Long lastErrorDate = webhookInfo.lastErrorDate();
+        Integer lastErrorDate = webhookInfo.lastErrorDate();
         if (lastErrorDate != null) {
             assertEquals(System.currentTimeMillis(), lastErrorDate * 1000L, 30_000L);
         }
@@ -2127,7 +2127,7 @@ public class TelegramBotTest {
     @Test
     public void inviteLinks() {
         int memberLimit = 2;
-        long expireDate = System.currentTimeMillis() / 1000 + 500;
+        int expireDate = (int) (System.currentTimeMillis() / 1000) + 500;
         String name = "TestName";
 
         ChatInviteLinkResponse response = bot.execute(new CreateChatInviteLink(groupId)
@@ -2135,21 +2135,21 @@ public class TelegramBotTest {
                 .memberLimit(memberLimit)
                 .name(name));
         ChatInviteLink link = response.chatInviteLink();
-        assertEquals(expireDate, link.expireDate().longValue());
+        assertEquals(expireDate, link.expireDate().intValue());
         assertEquals(memberLimit, link.memberLimit().intValue());
         assertFalse(link.isRevoked());
         assertTrue(link.creator().isBot());
         assertEquals(name, link.name());
 
         int editMemberLimit = 3;
-        long editExpireDate = System.currentTimeMillis() / 1000 + 1500;
+        int editExpireDate = (int) (System.currentTimeMillis() / 1000) + 1500;
         String editName = name + "edit";
         response = bot.execute(new EditChatInviteLink(groupId, link.inviteLink())
                 .expireDate(editExpireDate)
                 .memberLimit(editMemberLimit)
                 .name(editName));
         link = response.chatInviteLink();
-        assertEquals(editExpireDate, link.expireDate().longValue());
+        assertEquals(editExpireDate, link.expireDate().intValue());
         assertEquals(editMemberLimit, link.memberLimit().intValue());
         assertEquals(editName, link.name());
         assertFalse(link.isRevoked());

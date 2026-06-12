@@ -7,19 +7,19 @@ import java.util.Objects;
 public class ChatBoost {
 
     private String boost_id;
-    private Long add_date;
-    private Long expiration_date;
+    private Integer add_date;
+    private Integer expiration_date;
     private ChatBoostSource source;
 
     public String boostId() {
         return boost_id;
     }
 
-    public Long addDate() {
+    public Integer addDate() {
         return add_date;
     }
 
-    public Long expirationDate() {
+    public Integer expirationDate() {
         return expiration_date;
     }
 

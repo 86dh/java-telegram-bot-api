@@ -13,7 +13,7 @@ public class ChatJoinRequest implements Serializable {
     private Chat chat;
     private User from;
     private Long user_chat_id;
-    private Long date;
+    private Integer date;
     private String bio;
     private ChatInviteLink invite_link;
     private String query_id;
@@ -30,7 +30,7 @@ public class ChatJoinRequest implements Serializable {
         return user_chat_id;
     }
 
-    public Long date() {
+    public Integer date() {
         return date;
     }
 

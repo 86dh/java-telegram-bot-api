@@ -6,14 +6,14 @@ public class RevenueWithdrawalStateSucceeded extends RevenueWithdrawalState {
 
     public static final String TYPE = "succeeded";
 
-    private Long date;
+    private Integer date;
     private String url;
 
     public RevenueWithdrawalStateSucceeded() {
         super(TYPE);
     }
 
-    public Long date() {
+    public Integer date() {
         return date;
     }
 

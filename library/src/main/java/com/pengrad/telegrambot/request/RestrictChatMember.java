@@ -14,7 +14,7 @@ public class RestrictChatMember extends BaseRequest<RestrictChatMember, BaseResp
         add("chat_id", chatId).add("user_id", userId).add("permissions", permissions);
     }
 
-    public RestrictChatMember untilDate(long untilDate) {
+    public RestrictChatMember untilDate(int untilDate) {
         return add("until_date", untilDate);
     }
 

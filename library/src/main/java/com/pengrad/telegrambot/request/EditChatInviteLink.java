@@ -23,7 +23,7 @@ public class EditChatInviteLink extends BaseRequest<EditChatInviteLink, ChatInvi
         return add("name", name);
     }
 
-    public EditChatInviteLink expireDate(Long expireDate) {
+    public EditChatInviteLink expireDate(Integer expireDate) {
         return add("expire_date", expireDate);
     }
 

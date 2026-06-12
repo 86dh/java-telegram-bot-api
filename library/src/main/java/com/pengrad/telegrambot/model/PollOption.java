@@ -17,7 +17,7 @@ public class PollOption implements Serializable {
     private MessageEntity[] text_entities;
     private User added_by_user;
     private Chat added_by_chat;
-    private Long addition_date;
+    private Integer addition_date;
     private PollMedia media;
 
     public String persistentId() {
@@ -44,7 +44,7 @@ public class PollOption implements Serializable {
         return added_by_chat;
     }
 
-    public Long additionDate() {
+    public Integer additionDate() {
         return addition_date;
     }
 
