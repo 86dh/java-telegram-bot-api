@@ -19,7 +19,7 @@ public class ChatMember implements Serializable {
 
     private String custom_title;
     private Boolean is_anonymous;
-    private Integer until_date;
+    private Long until_date;
     private Boolean can_be_edited;
     private Boolean can_manage_chat;
     private Boolean can_post_messages;
@@ -70,7 +70,7 @@ public class ChatMember implements Serializable {
         return is_anonymous != null && is_anonymous;
     }
 
-    public Integer untilDate() {
+    public Long untilDate() {
         return until_date;
     }
 

@@ -12,7 +12,7 @@ public class Giveaway implements Serializable {
     private final static long serialVersionUID = 0L;
 
     private Chat[] chats;
-    private Integer winners_selection_date;
+    private Long winners_selection_date;
     private Integer winner_count;
     private Boolean only_new_members;
     private Boolean has_public_winners;
@@ -24,7 +24,7 @@ public class Giveaway implements Serializable {
     public Chat[] chats() {
         return chats;
     }
-    public Integer winnersSelectionDate() {
+    public Long winnersSelectionDate() {
         return winners_selection_date;
     }
     public Integer winnerCount() {

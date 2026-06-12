@@ -11,7 +11,7 @@ public class MessageReactionUpdated {
     private Integer message_id;
     private User user;
     private Chat actor_chat;
-    private Integer date;
+    private Long date;
     private ReactionType[] old_reaction;
     private ReactionType[] new_reaction;
 
@@ -31,7 +31,7 @@ public class MessageReactionUpdated {
         return actor_chat;
     }
 
-    public Integer date() {
+    public Long date() {
         return date;
     }
 

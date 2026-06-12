@@ -11,7 +11,7 @@ data class ChecklistTask(
     @get:JvmName("textEntities") val textEntities: Array<MessageEntity>?,
     @get:JvmName("completedByUser") val completedByUser: User?,
     @get:JvmName("completedByChat") val completedByChat: Chat? = null,
-    @get:JvmName("completionDate") val completionDate: Int?
+    @get:JvmName("completionDate") val completionDate: Long?
 
 ) {
 

@@ -28,7 +28,7 @@ public class Poll implements Serializable {
     private String explanation;
     private MessageEntity[] explanation_entities;
     private Integer open_period;
-    private Integer close_date;
+    private Long close_date;
     private String description;
     private MessageEntity[] description_entities;
     private PollMedia media;
@@ -96,7 +96,7 @@ public class Poll implements Serializable {
         return open_period;
     }
 
-    public Integer closeDate() {
+    public Long closeDate() {
         return close_date;
     }
 

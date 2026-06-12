@@ -22,7 +22,7 @@ public class MessageEntity implements Serializable {
     private User user;
     private String language;
     private String custom_emoji_id;
-    private Integer unix_time;
+    private Long unix_time;
     private String date_time_format;
 
     private MessageEntity() {
@@ -62,7 +62,7 @@ public class MessageEntity implements Serializable {
         return custom_emoji_id;
     }
 
-    public Integer unixTime() {
+    public Long unixTime() {
         return unix_time;
     }
 
@@ -90,7 +90,7 @@ public class MessageEntity implements Serializable {
         return this;
     }
 
-    public MessageEntity unixTime(Integer unix_time) {
+    public MessageEntity unixTime(Long unix_time) {
         this.unix_time = unix_time;
         return this;
     }

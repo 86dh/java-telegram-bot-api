@@ -51,7 +51,7 @@ public class ChatFullInfo implements Serializable {
     private Integer profile_accent_color_id;
     private String profile_background_custom_emoji_id;
     private String emoji_status_custom_emoji_id;
-    private Integer emoji_status_expiration_date;
+    private Long emoji_status_expiration_date;
     private String bio;
     private Boolean has_private_forwards;
     private Boolean has_restricted_voice_and_video_messages;
@@ -79,6 +79,7 @@ public class ChatFullInfo implements Serializable {
     private Integer paid_message_star_count;
     private UniqueGiftColors unique_gift_colors;
     private Audio first_profile_audio;
+    private User guard_bot;
 
     public Long id() {
         return id;
@@ -172,7 +173,7 @@ public class ChatFullInfo implements Serializable {
         return emoji_status_custom_emoji_id;
     }
 
-    public Integer emojiStatusExpirationDate() {
+    public Long emojiStatusExpirationDate() {
         return emoji_status_expiration_date;
     }
 
@@ -283,6 +284,10 @@ public class ChatFullInfo implements Serializable {
         return first_profile_audio;
     }
 
+    public User guardBot() {
+        return guard_bot;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -338,7 +343,8 @@ public class ChatFullInfo implements Serializable {
                 Objects.equals(rating, chat.rating) &&
                 Objects.equals(paid_message_star_count, chat.paid_message_star_count) &&
                 Objects.equals(unique_gift_colors, chat.unique_gift_colors) &&
-                Objects.equals(first_profile_audio, chat.first_profile_audio);
+                Objects.equals(first_profile_audio, chat.first_profile_audio) &&
+                Objects.equals(guard_bot, chat.guard_bot);
     }
 
     @Override
@@ -400,6 +406,7 @@ public class ChatFullInfo implements Serializable {
                 ", paid_message_star_count=" + paid_message_star_count +
                 ", unique_gift_colors=" + unique_gift_colors +
                 ", first_profile_audio=" + first_profile_audio +
+                ", guard_bot=" + guard_bot +
                 '}';
     }
 }

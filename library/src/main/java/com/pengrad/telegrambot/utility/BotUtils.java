@@ -12,6 +12,8 @@ import com.pengrad.telegrambot.model.message.MaybeInaccessibleMessage;
 import com.pengrad.telegrambot.model.message.origin.MessageOrigin;
 import com.pengrad.telegrambot.model.paidmedia.PaidMedia;
 import com.pengrad.telegrambot.model.reaction.ReactionType;
+import com.pengrad.telegrambot.model.richmessages.richblock.RichBlock;
+import com.pengrad.telegrambot.model.richmessages.richtext.RichText;
 import com.pengrad.telegrambot.model.stars.partner.TransactionPartner;
 import com.pengrad.telegrambot.model.stars.withdrawal.RevenueWithdrawalState;
 import com.pengrad.telegrambot.utility.gson.*;
@@ -40,6 +42,8 @@ public class BotUtils {
             .registerTypeAdapter(TransactionPartner.class, TransactionPartnerTypeAdapter.INSTANCE)
             .registerTypeAdapter(PaidMedia.class, new PaidMediaTypeAdapter())
             .registerTypeAdapter(OwnedGift.class, new OwnedGiftTypeAdapter())
+            .registerTypeAdapter(RichText.class, RichTextTypeAdapter.INSTANCE)
+            .registerTypeAdapter(RichBlock.class, RichBlockTypeAdapter.INSTANCE)
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create();
 

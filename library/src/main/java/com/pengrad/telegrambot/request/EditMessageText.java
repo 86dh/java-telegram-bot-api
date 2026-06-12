@@ -4,6 +4,7 @@ import com.pengrad.telegrambot.model.LinkPreviewOptions;
 import com.pengrad.telegrambot.model.MessageEntity;
 import com.pengrad.telegrambot.model.request.InlineKeyboardMarkup;
 import com.pengrad.telegrambot.model.request.ParseMode;
+import com.pengrad.telegrambot.model.request.richmessages.InputRichMessage;
 import com.pengrad.telegrambot.response.BaseResponse;
 import com.pengrad.telegrambot.response.SendResponse;
 
@@ -21,6 +22,16 @@ public class EditMessageText extends BaseRequest<EditMessageText, BaseResponse> 
     public EditMessageText(String inlineMessageId, String text) {
         super(BaseResponse.class);
         add("inline_message_id", inlineMessageId).add("text", text);
+    }
+
+    public EditMessageText(Object chatId, int messageId, InputRichMessage richMessage) {
+        super(SendResponse.class);
+        add("chat_id", chatId).add("message_id", messageId).add("rich_message", richMessage);
+    }
+
+    public EditMessageText(String inlineMessageId, InputRichMessage richMessage) {
+        super(BaseResponse.class);
+        add("inline_message_id", inlineMessageId).add("rich_message", richMessage);
     }
 
     public EditMessageText parseMode(ParseMode parseMode) {
@@ -41,6 +52,10 @@ public class EditMessageText extends BaseRequest<EditMessageText, BaseResponse> 
 
     public EditMessageText businessConnectionId(String businessConnectionId) {
         return add("business_connection_id", businessConnectionId);
+    }
+
+    public EditMessageText richMessage(InputRichMessage richMessage) {
+        return add("rich_message", richMessage);
     }
 
 }

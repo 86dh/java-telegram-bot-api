@@ -7,7 +7,7 @@ public class MessageOrigin implements Serializable  {
     private final static long serialVersionUID = 0L;
 
     protected String type;
-    protected Integer date;
+    protected Long date;
 
     public MessageOrigin(String type) {
         this.type = type;
@@ -17,7 +17,7 @@ public class MessageOrigin implements Serializable  {
         return type;
     }
 
-    public Integer date() {
+    public Long date() {
         return date;
     }
 

@@ -13,9 +13,10 @@ public class ChatJoinRequest implements Serializable {
     private Chat chat;
     private User from;
     private Long user_chat_id;
-    private Integer date;
+    private Long date;
     private String bio;
     private ChatInviteLink invite_link;
+    private String query_id;
 
     public Chat chat() {
         return chat;
@@ -29,7 +30,7 @@ public class ChatJoinRequest implements Serializable {
         return user_chat_id;
     }
 
-    public Integer date() {
+    public Long date() {
         return date;
     }
 
@@ -41,6 +42,9 @@ public class ChatJoinRequest implements Serializable {
         return invite_link;
     }
 
+    public String queryId() {
+        return query_id;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -52,12 +56,13 @@ public class ChatJoinRequest implements Serializable {
                 Objects.equals(user_chat_id, that.user_chat_id) &&
                 Objects.equals(date, that.date) &&
                 Objects.equals(bio, that.bio) &&
-                Objects.equals(invite_link, that.invite_link);
+                Objects.equals(invite_link, that.invite_link) &&
+                Objects.equals(query_id, that.query_id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(chat, from, user_chat_id, date, bio, invite_link);
+        return Objects.hash(chat, from, user_chat_id, date, bio, invite_link, query_id);
     }
 
     @Override
@@ -69,6 +74,7 @@ public class ChatJoinRequest implements Serializable {
                 ", date=" + date +
                 ", bio=" + bio +
                 ", invite_link=" + invite_link +
+                ", query_id=" + query_id +
                 '}';
     }
 }

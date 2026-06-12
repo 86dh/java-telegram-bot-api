@@ -27,6 +27,7 @@ public class User implements Serializable {
     private Boolean allows_users_to_create_topics;
     private Boolean can_manage_bots;
     private Boolean supports_guest_queries;
+    private Boolean supports_join_request_queries;
 
     private User() {
     }
@@ -103,6 +104,10 @@ public class User implements Serializable {
         return supports_guest_queries != null && supports_guest_queries;
     }
 
+    public Boolean supportsJoinRequestQueries() {
+        return supports_join_request_queries != null && supports_join_request_queries;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,7 +121,8 @@ public class User implements Serializable {
                 && Objects.equals(has_main_web_app, user.has_main_web_app) && Objects.equals(has_topics_enabled, user.has_topics_enabled)
                 && Objects.equals(allows_users_to_create_topics, user.allows_users_to_create_topics)
                 && Objects.equals(can_manage_bots, user.can_manage_bots)
-                && Objects.equals(supports_guest_queries, user.supports_guest_queries);
+                && Objects.equals(supports_guest_queries, user.supports_guest_queries)
+                && Objects.equals(supports_join_request_queries, user.supports_join_request_queries);
     }
 
     @Override
@@ -144,6 +150,7 @@ public class User implements Serializable {
                 ", allows_users_to_create_topics=" + allows_users_to_create_topics +
                 ", can_manage_bots=" + can_manage_bots +
                 ", supports_guest_queries=" + supports_guest_queries +
+                ", supports_join_request_queries=" + supports_join_request_queries +
                 '}';
     }
 }
